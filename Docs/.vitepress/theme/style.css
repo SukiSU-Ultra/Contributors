@@ -355,7 +355,7 @@
 
 .podium {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   max-width: 900px;
   margin: 0 auto;
@@ -456,10 +456,9 @@
 
 .contributors-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1rem;
   margin-top: 1.5rem;
-  padding: 0 1rem;
 }
 
 .contributor-card {
@@ -920,4 +919,195 @@
 }
 
 .cta-button.primary {
-  background: linear-gradient(135deg, var(--vp-c-brand-1) 0%, var(--vp-c-
+  background: linear-gradient(135deg, var(--vp-c-brand-1) 0%, var(--vp-c-brand-2) 100%);
+  color: white;
+}
+
+.cta-button.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  color: white;
+  text-decoration: none;
+}
+
+.cta-button.secondary {
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  border-color: var(--vp-c-divider-light);
+}
+
+.cta-button.secondary:hover {
+  border-color: var(--vp-c-brand);
+  background: var(--vp-c-bg-soft);
+  transform: translateY(-2px);
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+}
+
+/* Responsive design for thank you section */
+@media (max-width: 768px) {
+  .thank-you-section {
+    padding: 4rem 1rem;
+  }
+  
+  .thank-you-title {
+    font-size: 2.5rem;
+  }
+  
+  .thank-you-message {
+    font-size: 1.125rem;
+  }
+  
+  .thank-you-stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .stat-item {
+    padding: 1.5rem 1rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+}
+
+/* Responsive design for new contributors page layout */
+@media (max-width: 768px) {
+  .page-header {
+    padding: 3rem 1rem 4rem;
+  }
+  
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .main-subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stats-badge {
+    padding: 1rem 1.5rem;
+  }
+  
+  .stats-number {
+    font-size: 2rem;
+  }
+  
+  .logo-background::before {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .logo {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .contributors-section {
+    padding: 3rem 1rem 4rem;
+  }
+  
+  .VPTeamMembers {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .VPTeamMember {
+    padding: 2rem;
+  }
+  
+  .VPTeamMember .avatar {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Fix for navigation logo and title with colorful background */
+.VPNavBar .logo {
+  max-height: 32px;
+  width: auto;
+  position: relative;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.VPNavBar .logo::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  background: radial-gradient(
+    circle,
+    rgba(102, 126, 234, 0.3) 0%,
+    rgba(118, 75, 162, 0.25) 20%,
+    rgba(240, 147, 251, 0.2) 40%,
+    rgba(255, 154, 158, 0.15) 60%,
+    rgba(139, 92, 246, 0.1) 80%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  filter: blur(8px);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.VPNavBar .logo:hover::before {
+  opacity: 1;
+}
+
+.VPNavBar .logo:hover {
+  transform: scale(1.05);
+}
+
+.VPNavBar .title {
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+/* Ensure all text uses Inter font */
+body, 
+.VPDoc,
+.VPContent,
+.contributors-page,
+h1, h2, h3, h4, h5, h6,
+p, span, div {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Fix any broken text rendering */
+.main-title,
+.section-title,
+.thank-you-title {
+  display: block;
+  text-align: center;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+/* Ensure proper color fallback */
+@supports not (-webkit-background-clip: text) {
+  .main-title,
+  .section-title,
+  .thank-you-title {
+    color: #667eea !important;
+    background: none !important;
+  }
+}
