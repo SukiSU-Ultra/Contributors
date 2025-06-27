@@ -33,8 +33,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4.4.0
         with:
-          node-version: 24.3.0
-          cache: 'pnpm'
+          node-version: 22.17.0
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4.1.0
