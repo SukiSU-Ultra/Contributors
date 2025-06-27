@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "SukiSU-Ultra Contributors",
   description: "Meet the amazing developers who power SukiSU-Ultra",
-  base: '/',
+  base: '/Contributors/',
   
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }],
