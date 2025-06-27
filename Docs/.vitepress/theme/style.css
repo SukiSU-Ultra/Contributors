@@ -355,7 +355,7 @@
 
 .podium {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
   max-width: 900px;
   margin: 0 auto;
@@ -456,7 +456,7 @@
 
 .contributors-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
   margin-top: 1.5rem;
 }
@@ -1110,4 +1110,20 @@ p, span, div {
     color: #667eea !important;
     background: none !important;
   }
+}
+
+@media (max-width: 480px) {
+  .contributors-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.contributor-avatar,
+.podium-avatar {
+  object-fit: cover;
 }
