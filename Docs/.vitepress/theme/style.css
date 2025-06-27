@@ -459,6 +459,7 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
   margin-top: 1.5rem;
+  padding: 0 1rem;
 }
 
 .contributor-card {
@@ -1126,4 +1127,16 @@ html, body {
 .contributor-avatar,
 .podium-avatar {
   object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+  .contributors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .contributors-grid {
+    grid-template-columns: 1fr;
+  }
 }
