@@ -1,0 +1,1113 @@
+/* Import fonts first - must be at the top */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* Advanced contributors page styling - matching modern GitHub design */
+:root {
+  --contributors-primary: #0969da;
+  --contributors-primary-hover: #0860ca;
+  --contributors-secondary: #656d76;
+  --contributors-accent: #7c3aed;
+  --contributors-success: #1a7f37;
+  --contributors-warning: #bf8700;
+  --contributors-danger: #cf222e;
+  
+  --contributors-bg: #ffffff;
+  --contributors-bg-secondary: #f6f8fa;
+  --contributors-bg-tertiary: #f0f2f5;
+  --contributors-border: #d1d9e0;
+  --contributors-border-hover: #0969da;
+  
+  --contributors-text-primary: #1f2328;
+  --contributors-text-secondary: #656d76;
+  --contributors-text-tertiary: #8b949e;
+  
+  --contributors-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --contributors-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --contributors-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --contributors-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] {
+  --contributors-primary: #4493f8;
+  --contributors-primary-hover: #369eff;
+  --contributors-secondary: #8b949e;
+  --contributors-accent: #a855f7;
+  --contributors-success: #3fb950;
+  --contributors-warning: #d29922;
+  --contributors-danger: #f85149;
+  
+  --contributors-bg: #0d1117;
+  --contributors-bg-secondary: #161b22;
+  --contributors-bg-tertiary: #21262d;
+  --contributors-border: #30363d;
+  --contributors-border-hover: #4493f8;
+  
+  --contributors-text-primary: #f0f6fc;
+  --contributors-text-secondary: #8b949e;
+  --contributors-text-tertiary: #6e7681;
+}
+
+/* Contributors page layout - MMRL-inspired clean design */
+.contributors-page {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--vp-c-bg);
+  min-height: 100vh;
+}
+
+/* Header section with colorful logo background */
+.page-header {
+  text-align: center;
+  padding: 4rem 2rem 6rem;
+  position: relative;
+  background: var(--vp-c-bg);
+  border-bottom: 1px solid var(--vp-c-divider-light);
+}
+
+/* Colorful logo background like VitePress.dev */
+.logo-background {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 3rem;
+}
+
+.logo-background::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    rgba(102, 126, 234, 0.4) 0%,
+    rgba(118, 75, 162, 0.35) 20%,
+    rgba(240, 147, 251, 0.3) 40%,
+    rgba(255, 154, 158, 0.25) 60%,
+    rgba(139, 92, 246, 0.2) 80%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  filter: blur(24px);
+  z-index: 0;
+  animation: pulse-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+}
+
+.logo {
+  position: relative;
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+.main-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--vp-c-text-1);
+  letter-spacing: -0.02em;
+  font-family: var(--vp-font-family-base);
+  line-height: 1.1;
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Fallback for browsers that don't support background-clip */
+  @supports not (-webkit-background-clip: text) {
+    color: var(--vp-c-brand-1);
+    background: none;
+  }
+}
+
+.main-subtitle {
+  font-size: 1.25rem;
+  color: var(--vp-c-text-2);
+  margin-bottom: 2rem;
+  font-weight: 500;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.stats-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--vp-c-bg-soft);
+  border: 2px solid var(--vp-c-divider-light);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  transition: all 0.3s ease;
+}
+
+.stats-badge:hover {
+  border-color: var(--vp-c-brand);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.stats-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--vp-c-brand-1);
+  display: block;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.stats-label {
+  font-size: 0.95rem;
+  color: var(--vp-c-text-2);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Contributors section */
+.contributors-section {
+  padding: 4rem 2rem 6rem;
+  background: var(--vp-c-bg);
+}
+
+/* Header section - Simple and clean */
+.contributors-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 1.5rem 0;
+}
+
+.contributors-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--contributors-text-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.contributors-subtitle {
+  font-size: 1rem;
+  color: var(--contributors-text-secondary);
+  max-width: 500px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.5;
+}
+
+.total-contributions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--contributors-bg-secondary);
+  border: 1px solid var(--contributors-border);
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--contributors-text-secondary);
+}
+
+/* Loading states */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.spinner-icon {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--contributors-border);
+  border-top: 4px solid var(--contributors-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error states */
+.error-message {
+  background: var(--contributors-bg-secondary);
+  border: 1px solid var(--contributors-danger);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  margin: 2rem 0;
+  color: var(--contributors-danger);
+}
+
+.retry-button {
+  background: var(--contributors-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+}
+
+.retry-button:hover {
+  background: var(--contributors-primary-hover);
+  transform: translateY(-1px);
+}
+
+/* Stats summary */
+.stats-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.summary-card {
+  background: var(--contributors-bg-secondary);
+  border: 1px solid var(--contributors-border);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.summary-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--contributors-shadow-lg);
+  border-color: var(--contributors-border-hover);
+}
+
+.summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--contributors-primary), var(--contributors-accent));
+}
+
+.summary-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.summary-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--contributors-primary);
+  display: block;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.summary-label {
+  color: var(--contributors-text-secondary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Hall of Fame Podium */
+.podium-section {
+  margin: 4rem 0;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: var(--contributors-text-primary);
+}
+
+.podium {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.podium-place {
+  background: var(--contributors-bg-secondary);
+  border: 2px solid var(--contributors-border);
+  border-radius: 20px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.podium-place::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+}
+
+.podium-place.first::before {
+  background: linear-gradient(90deg, #ffd700, #ffed4e);
+}
+
+.podium-place.second::before {
+  background: linear-gradient(90deg, #c0c0c0, #e5e7eb);
+}
+
+.podium-place.third::before {
+  background: linear-gradient(90deg, #cd7f32, #d97706);
+}
+
+.podium-place:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--contributors-shadow-xl);
+  border-color: var(--contributors-border-hover);
+}
+
+.podium-rank {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.podium-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 4px solid var(--contributors-border);
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.podium-place:hover .podium-avatar {
+  transform: scale(1.1);
+  border-color: var(--contributors-border-hover);
+}
+
+.podium-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0.25rem;
+  color: var(--contributors-text-primary);
+}
+
+.podium-username {
+  color: var(--contributors-text-secondary);
+  font-size: 0.9rem;
+  margin: 0 0 1rem;
+}
+
+.podium-contributions {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--contributors-primary);
+  margin-bottom: 0.5rem;
+}
+
+.contribution-level {
+  background: var(--contributors-primary);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* Contributors grid - Clean layout matching screenshot */
+.contributors-section {
+  margin: 2rem 0;
+}
+
+.contributors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.contributor-card {
+  background: var(--contributors-bg-secondary);
+  border: 1px solid var(--contributors-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.contributor-card:hover {
+  box-shadow: var(--contributors-shadow);
+  border-color: var(--contributors-border-hover);
+}
+
+.contributor-rank {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--contributors-text-tertiary);
+  font-weight: 500;
+}
+
+.contributor-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.avatar-container {
+  position: relative;
+}
+
+.contributor-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--contributors-border);
+  transition: all 0.2s ease;
+}
+
+.contributor-card:hover .contributor-avatar {
+  border-color: var(--contributors-border-hover);
+}
+
+.contributor-details h4 {
+  margin: 0.5rem 0 0.25rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--contributors-text-primary);
+}
+
+.contributor-username {
+  color: var(--contributors-text-secondary);
+  font-size: 0.875rem;
+  margin: 0 0 1rem 0;
+}
+
+.contributor-stats {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--contributors-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--contributors-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--contributors-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.github-link:hover {
+  background: var(--contributors-primary-hover);
+  transform: translateY(-1px);
+  text-decoration: none;
+  color: white;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--contributors-text-secondary);
+}
+
+.empty-state h3 {
+  color: var(--contributors-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+/* Enhanced Typography and Colors - Fixed text rendering */
+:root {
+  --vp-font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --vp-font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, Monaco, "Courier New", monospace;
+}
+
+/* Fix text rendering and font display */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fix logo in navigation */
+.VPNavBarTitle .title {
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+}
+
+/* VitePress.dev style logo background */
+.VPHero .VPImage {
+  position: relative;
+}
+
+.VPHero .VPImage::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(124, 58, 237, 0.5) 0%, rgba(124, 58, 237, 0) 100%);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  filter: blur(68px);
+  z-index: -1;
+}
+
+.dark .VPHero .VPImage::before {
+  background: radial-gradient(50% 50% at 50% 50%, rgba(139, 92, 246, 0.3) 0%, rgba(139, 92, 246, 0) 100%);
+}
+
+/* Enhanced Hero Typography */
+.VPHero .name {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.VPHero .text {
+  font-weight: 600;
+  font-size: 3rem;
+  line-height: 1.1;
+}
+
+.VPHero .tagline {
+  font-size: 1.25rem;
+  font-weight: 500;
+  opacity: 0.8;
+  margin-top: 1rem;
+}
+
+/* Contributors Section Styling - Full width for new layout */
+.contributors-section .VPTeamPage {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.VPTeamPageTitle {
+  text-align: center;
+  margin-bottom: 4rem;
+  display: none; /* Hidden since we have our own header */
+}
+
+.VPTeamPageTitle h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+.VPTeamPageTitle .lead {
+  font-size: 1.25rem;
+  color: var(--vp-c-text-2);
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Enhanced contributor cards with better typography */
+.VPTeamMembers {
+  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.VPTeamMember {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 16px;
+  background: var(--vp-c-bg);
+  border: 2px solid var(--vp-c-divider-light);
+  padding: 2.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.VPTeamMember::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.VPTeamMember:hover::before {
+  opacity: 1;
+}
+
+.VPTeamMember:hover {
+  border-color: var(--vp-c-brand);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+.VPTeamMember .avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 4px solid var(--vp-c-divider-light);
+  margin: 0 auto 2rem;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.VPTeamMember:hover .avatar {
+  border-color: var(--vp-c-brand);
+  transform: scale(1.05);
+}
+
+.VPTeamMember .name {
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  margin-bottom: 0.5rem;
+  font-family: var(--vp-font-family-base);
+  letter-spacing: -0.01em;
+}
+
+.VPTeamMember .title {
+  font-size: 1.125rem;
+  color: var(--vp-c-text-2);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.VPTeamMember .links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.VPTeamMember .links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  border: 2px solid var(--vp-c-divider);
+  color: var(--vp-c-text-2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.VPTeamMember .links a:hover {
+  background: var(--vp-c-brand);
+  border-color: var(--vp-c-brand);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Contributors section styling */
+.contributors-section .section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 0 2rem;
+}
+
+.contributors-section .section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Fallback for browsers that don't support background-clip */
+  @supports not (-webkit-background-clip: text) {
+    color: var(--vp-c-brand-1);
+    background: none;
+  }
+}
+
+.contributors-section .section-subtitle {
+  font-size: 1.125rem;
+  color: var(--vp-c-text-2);
+  font-weight: 500;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Thank you section */
+.thank-you-section {
+  background: linear-gradient(135deg, var(--vp-c-bg-soft) 0%, var(--vp-c-bg-alt) 100%);
+  border-top: 1px solid var(--vp-c-divider-light);
+  padding: 6rem 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.thank-you-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.thank-you-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--vp-c-text-1);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Fallback for browsers that don't support background-clip */
+  @supports not (-webkit-background-clip: text) {
+    color: var(--vp-c-brand-1);
+    background: none;
+  }
+}
+
+.thank-you-message {
+  font-size: 1.25rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  font-weight: 500;
+}
+
+.thank-you-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  background: var(--vp-c-bg);
+  border: 2px solid var(--vp-c-divider-light);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  border-color: var(--vp-c-brand);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--vp-c-brand-1);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  color: var(--vp-c-text-2);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* CTA buttons */
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.cta-button.primary {
+  background: linear-gradient(135deg, var(--vp-c-brand-1) 0%, var(--vp-c-brand-2) 100%);
+  color: white;
+}
+
+.cta-button.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  color: white;
+  text-decoration: none;
+}
+
+.cta-button.secondary {
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  border-color: var(--vp-c-divider-light);
+}
+
+.cta-button.secondary:hover {
+  border-color: var(--vp-c-brand);
+  background: var(--vp-c-bg-soft);
+  transform: translateY(-2px);
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+}
+
+/* Responsive design for thank you section */
+@media (max-width: 768px) {
+  .thank-you-section {
+    padding: 4rem 1rem;
+  }
+  
+  .thank-you-title {
+    font-size: 2.5rem;
+  }
+  
+  .thank-you-message {
+    font-size: 1.125rem;
+  }
+  
+  .thank-you-stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .stat-item {
+    padding: 1.5rem 1rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+}
+
+/* Responsive design for new contributors page layout */
+@media (max-width: 768px) {
+  .page-header {
+    padding: 3rem 1rem 4rem;
+  }
+  
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .main-subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stats-badge {
+    padding: 1rem 1.5rem;
+  }
+  
+  .stats-number {
+    font-size: 2rem;
+  }
+  
+  .logo-background::before {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .logo {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .contributors-section {
+    padding: 3rem 1rem 4rem;
+  }
+  
+  .VPTeamMembers {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .VPTeamMember {
+    padding: 2rem;
+  }
+  
+  .VPTeamMember .avatar {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Fix for navigation logo and title with colorful background */
+.VPNavBar .logo {
+  max-height: 32px;
+  width: auto;
+  position: relative;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.VPNavBar .logo::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  background: radial-gradient(
+    circle,
+    rgba(102, 126, 234, 0.3) 0%,
+    rgba(118, 75, 162, 0.25) 20%,
+    rgba(240, 147, 251, 0.2) 40%,
+    rgba(255, 154, 158, 0.15) 60%,
+    rgba(139, 92, 246, 0.1) 80%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  filter: blur(8px);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.VPNavBar .logo:hover::before {
+  opacity: 1;
+}
+
+.VPNavBar .logo:hover {
+  transform: scale(1.05);
+}
+
+.VPNavBar .title {
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+/* Ensure all text uses Inter font */
+body, 
+.VPDoc,
+.VPContent,
+.contributors-page,
+h1, h2, h3, h4, h5, h6,
+p, span, div {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Fix any broken text rendering */
+.main-title,
+.section-title,
+.thank-you-title {
+  display: block;
+  text-align: center;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+/* Ensure proper color fallback */
+@supports not (-webkit-background-clip: text) {
+  .main-title,
+  .section-title,
+  .thank-you-title {
+    color: #667eea !important;
+    background: none !important;
+  }
+}

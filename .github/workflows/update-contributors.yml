@@ -1,0 +1,74 @@
+name: Update Contributors Data
+
+on:
+  schedule:
+    - cron: '0 */4 * * *'
+
+  workflow_dispatch:
+
+  push:
+    branches: ['main', 'master']
+    paths:
+      - 'Docs/.vitepress/data/contributors.data.ts'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  update-contributors:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Update contributors data
+        run: |
+          echo "🚀 Updating contributors data..."
+          # Trigger VitePress data loading to update contributors
+          pnpm run docs:build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check for changes
+        id: verify-changed-files
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "🤖 Auto-update contributors data [$(date '+%Y-%m-%d %H:%M:%S')]"
+          git push
+
+      - name: Log status
+        run: |
+          if [ "${{ steps.verify-changed-files.outputs.changed }}" == "true" ]; then
+            echo "✅ Contributors data updated and committed"
+          else
+            echo "ℹ️ No changes to contributors data"
+          fi

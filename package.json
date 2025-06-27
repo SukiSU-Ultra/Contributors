@@ -1,0 +1,22 @@
+{
+  "name": "sukisu-ultra-contributors",
+  "version": "1.0.0",
+  "description": "Beautiful contributors showcase for SukiSU-Ultra with GraphQL",
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev Docs",
+    "docs:build": "vitepress build Docs",
+    "docs:preview": "vitepress preview Docs"
+  },
+  "devDependencies": {
+    "vitepress": "^2.0.0-alpha.7",
+    "@types/node": "^24.0.4",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@octokit/graphql": "^9.0.1",
+    "vue": "^3.5.17",
+    "@vueuse/core": "^13.4.0",
+    "graphql": "^16.11.0"
+  }
+}
