@@ -77,7 +77,8 @@ export default defineLoader({
         'renovate[bot]',
         'greenkeeper[bot]',
         'codecov[bot]',
-        'snyk-bot'
+        'snyk-bot',
+        'rifsxd'
       ]
       
       const filteredContributors = allContributors
