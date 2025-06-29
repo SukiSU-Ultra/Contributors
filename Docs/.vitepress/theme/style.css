@@ -1,21 +1,13 @@
-:root:where(:lang(fa)) {
-  --vp-font-family-base:
-    'Vazirmatn', 'Inter', ui-sans-serif, system-ui, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-}
+/* FONT IMPORT */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
 
+/* HERO GRADIENTS, BLUR, PADDING, COLORS */
 :root {
+  --vp-font-family-base: 'Vazirmatn', 'Inter', ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(
-    120deg,
-    #1d6586 30%,
-    #41d1ff
-  );
-  --vp-home-hero-image-background-image: linear-gradient(
-    -45deg,
-    #1d6586 50%,
-    #47caff 50%
-  );
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #1d6586 30%, #41d1ff);
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, #1d6586 50%, #47caff 50%);
   --vp-home-hero-image-filter: blur(44px);
 }
 
@@ -36,8 +28,15 @@
   padding: 18px;
 }
 
-/* used in reference/default-theme-search */
+/* IMAGE FIX */
 img[src='/search.png'] {
   width: 100%;
   aspect-ratio: 1 / 1;
+} 
+
+/* FALLBACK FOR LANG=FA */
+:root:where(:lang(fa)) {
+  --vp-font-family-base:
+    'Vazirmatn', 'Inter', ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
