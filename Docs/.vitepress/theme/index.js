@@ -1,10 +1,4 @@
-// VitePress theme configuration
-import DefaultTheme from 'vitepress/theme'
-import './style.css'
+import Theme from 'vitepress/theme'
+import './styles.css'
 
-export default {
-  extends: DefaultTheme,
-  enhanceApp({ app, router, siteData }) {
-    // You can register global components here
-  }
-}
+export default Theme
