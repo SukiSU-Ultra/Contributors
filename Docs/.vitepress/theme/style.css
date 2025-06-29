@@ -35,7 +35,17 @@ body, html, h1, h2, h3, h4, h5, h6, p, span, div {
   font-family: var(--vp-font-family-base) !important;
 }
 
-/* Header improvements - target the actual nav bar */
+.Layout, #app, body {
+  background: 
+    radial-gradient(ellipse 1600px 800px at 20% 0%, rgba(74, 144, 226, 0.95) 0%, rgba(74, 144, 226, 0.8) 15%, rgba(74, 144, 226, 0.5) 35%, rgba(74, 144, 226, 0.2) 60%, transparent 85%),
+    radial-gradient(ellipse 1400px 700px at 80% 100%, rgba(0, 191, 255, 0.9) 0%, rgba(0, 191, 255, 0.7) 15%, rgba(0, 191, 255, 0.4) 35%, rgba(0, 191, 255, 0.1) 60%, transparent 85%),
+    radial-gradient(ellipse 1200px 600px at 50% 50%, rgba(135, 206, 235, 0.85) 0%, rgba(135, 206, 235, 0.6) 20%, rgba(135, 206, 235, 0.3) 45%, transparent 75%),
+    linear-gradient(135deg, rgba(74, 144, 226, 0.4) 0%, rgba(135, 206, 235, 0.3) 25%, rgba(0, 191, 255, 0.4) 50%, rgba(74, 144, 226, 0.3) 75%, rgba(135, 206, 235, 0.4) 100%);
+  background-attachment: fixed;
+  background-size: 150% 150%, 150% 150%, 120% 120%, 100% 100%;
+  min-height: 100vh;
+}
+
 .VPNavBar {
   border-bottom: 1px solid var(--vp-c-border);
   background-color: var(--vp-c-bg);
@@ -43,7 +53,6 @@ body, html, h1, h2, h3, h4, h5, h6, p, span, div {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
 }
 
-/* Footer improvements - use CSS custom properties */
 .VPFooter {
   border-top: 1px solid var(--vp-c-border);
   background-color: var(--vp-c-bg-soft);
@@ -57,7 +66,6 @@ body, html, h1, h2, h3, h4, h5, h6, p, span, div {
   line-height: 24px;
 }
 
-/* Ensure proper spacing in layout */
 .Layout {
   min-height: 100vh;
   display: flex;
@@ -68,100 +76,139 @@ body, html, h1, h2, h3, h4, h5, h6, p, span, div {
   flex: 1;
 }
 
-/* ===== CUSTOM PAGE STYLES ===== */
-
-/* Contributors page container */
 .contributors-page {
   min-height: 100vh;
-  background: var(--vp-c-bg);
+  position: relative;
 }
 
-/* Page header section */
 .page-header {
   text-align: center;
   padding: 4rem 2rem 3rem;
-  background: linear-gradient(135deg, var(--vp-c-bg) 0%, var(--vp-c-bg-soft) 100%);
+  background: var(--vp-c-bg);
   border-bottom: 1px solid var(--vp-c-border);
 }
 
 .logo-background {
-  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 4rem;
+}
+
+.logo-background::before {
+  content: '';
+  position: absolute;
+  top: 60%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    rgba(74, 144, 226, 0.4) 0%,
+    rgba(74, 144, 226, 0.35) 20%,
+    rgba(135, 206, 235, 0.3) 40%,
+    rgba(135, 206, 235, 0.25) 60%,
+    rgba(74, 144, 226, 0.2) 80%,
+    transparent 80%
+  );
+  border-radius: 60%;
+  filter: blur(48px);
+  z-index: 0;
+  animation: pulse-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
 }
 
 .logo {
+  position: relative;
+  z-index: 1;
   width: 120px;
   height: 120px;
   border-radius: 20px;
   background: linear-gradient(135deg, #4A90E2 0%, #87CEEB 100%);
-  padding: 8px;
+  padding: 10px;
   box-shadow: 0 8px 32px rgba(74, 144, 226, 0.3);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
   display: block;
   margin: 0 auto;
-  position: relative;
-}
-
-.logo::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: -20px;
-  right: -20px;
-  bottom: -20px;
-  background: radial-gradient(ellipse 160px 80px at center, rgba(74, 144, 226, 0.3) 0%, rgba(135, 206, 235, 0.2) 50%, transparent 70%);
-  border-radius: 50px;
-  filter: blur(20px);
-  z-index: -1;
 }
 
 .logo:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 12px 40px rgba(74, 144, 226, 0.4);
 }
 
 .main-title {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 800;
-  margin: 1rem 0;
-  background: var(--vp-home-hero-name-background);
+  margin-bottom: 1rem;
+  color: var(--vp-c-text-1);
+  letter-spacing: -0.02em;
+  font-family: var(--vp-font-family-base);
+  line-height: 1.1;
+  text-align: center;
+  background: linear-gradient(135deg, #4A90E2 0%, #87CEEB 50%, #00BFFF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  line-height: 1.2;
 }
 
 .main-subtitle {
   font-size: 1.25rem;
   color: var(--vp-c-text-2);
   margin-bottom: 2rem;
+  font-weight: 500;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.6;
 }
 
 .stats-badge {
   display: inline-flex;
   flex-direction: column;
+  align-items: center;
   background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-border);
-  border-radius: 12px;
+  border: 2px solid var(--vp-c-divider-light);
+  border-radius: 16px;
   padding: 1.5rem 2rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.stats-badge:hover {
+  border-color: var(--vp-c-brand);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .stats-number {
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--vp-c-brand-1);
+  display: block;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
   line-height: 1;
 }
 
 .stats-label {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--vp-c-text-2);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   margin-top: 0.5rem;
 }
 
-/* Contributors section */
 .contributors-section {
   padding: 4rem 2rem;
   max-width: 1200px;
@@ -187,7 +234,6 @@ body, html, h1, h2, h3, h4, h5, h6, p, span, div {
   margin: 0 auto;
 }
 
-/* Thank you section */
 .thank-you-section {
   background: var(--vp-c-bg-soft);
   border-top: 1px solid var(--vp-c-border);
@@ -240,7 +286,6 @@ body, html, h1, h2, h3, h4, h5, h6, p, span, div {
   margin-top: 0.5rem;
 }
 
-/* CTA buttons */
 .cta-buttons {
   display: flex;
   gap: 1rem;
@@ -282,7 +327,6 @@ body, html, h1, h2, h3, h4, h5, h6, p, span, div {
   transform: translateY(-2px);
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
   .main-title {
     font-size: 2rem;
@@ -310,7 +354,6 @@ body, html, h1, h2, h3, h4, h5, h6, p, span, div {
     justify-content: center;
   }
   
-  /* Fix mobile text wrapping */
   .section-header {
     padding: 0 0.5rem;
   }
@@ -322,16 +365,12 @@ body, html, h1, h2, h3, h4, h5, h6, p, span, div {
   }
 }
 
-/* ===== PROPER HEADER & FOOTER FIXES ===== */
-
-/* Fix header - VitePress specific */
 .VPNavBar, .VPLocalNav {
   border-bottom: 1px solid var(--vp-c-divider) !important;
   backdrop-filter: blur(8px);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* Fix footer positioning and styling */
 .VPFooter, .VPDocFooter, footer {
   border-top: 1px solid var(--vp-c-divider) !important;
   background: var(--vp-c-bg-soft) !important;
@@ -339,7 +378,6 @@ body, html, h1, h2, h3, h4, h5, h6, p, span, div {
   margin-top: auto !important;
 }
 
-/* Ensure layout takes full height */
 #app, .Layout {
   min-height: 100vh;
   display: flex;
@@ -350,7 +388,6 @@ body, html, h1, h2, h3, h4, h5, h6, p, span, div {
   flex: 1;
 }
 
-/* Fix header logo styling */
 .VPNavBarTitle .VPImage,
 .VPNavBar .logo,
 .VPNavBar img[src*="logo"] {
