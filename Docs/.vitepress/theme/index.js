@@ -1,4 +1,8 @@
-import Theme from 'vitepress/theme'
-import './styles.css'
+import DefaultTheme from 'vitepress/theme'
+import './style.css'
 
-export default Theme
+export default {
+  extends: DefaultTheme,
+  enhanceApp({ app, router, siteData }) {
+  }
+}
