@@ -27,19 +27,21 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'GitHub', link: 'https://github.com/sukisu-ultra/sukisu-ultra' },
+      { text: 'Telegram', link: 'https://t.me/SukiKsu' },
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/sukisu-ultra/sukisu-ultra' }
+      { icon: 'github', link: 'https://github.com/sukisu-ultra/sukisu-ultra' },
+      { icon: 'Telegram', link: 'https://t.me/SukiKsu' },
     ],
 
     footer: {
-      message: 'Built with ❤️ for the SukiSU-Ultra community',
-      copyright: 'Copyright © 2025 SukiSU-Ultra Contributors'
+      message: 'Built with ❤️ for the SukiSU-Ultra Contributors by Saksham',
+      copyright: 'Copyright © 2025 SukiSU-Ultra & Contributors'
     },
 
     search: {
-      provider: 'local'
+      provider: 'google'
     }
   },
 
